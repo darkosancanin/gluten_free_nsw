@@ -1,5 +1,5 @@
 Gluten Free NSW is a free iPhone application which lists gluten free friendly restaurants and cafe's within New South Wales (inc. ACT).
 
-The application allows you to easily find restaurants closest to you or in a particular suburb. There are currently over 650 restaurant listings which can be viewed in a list or on a map, and are easily searched upon and sorted.
+The application allows you to easily find restaurants closest to you or in a particular suburb. There are currently over 1000 restaurant listings which can be viewed in a list or on a map, and are easily searched upon and sorted.
 
 The database is not stored in the git repository. There is a sqlite database which contains the data structure but with no data. (glutenfreensw_datastructureonly.sqlite)
