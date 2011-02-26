@@ -29,8 +29,8 @@
 
 - (UILabel *)labelWithSystemFontOfSize:(CGFloat)size {
 	CGFloat width = [UIScreen mainScreen].bounds.size.width - 50;
-	CGFloat height = [self textHeightForSystemFontOfSize:size] + 10.0;
-	CGRect frame = CGRectMake(10.0f, 10.0f, width, height);
+	CGFloat height = [self textHeightForSystemFontOfSize:size];
+	CGRect frame = CGRectMake(10.0f, 0, width, height);
 	UILabel *label = [[UILabel alloc] initWithFrame:frame];
 	label.textColor = [UIColor blackColor];
 	label.backgroundColor = [UIColor clearColor];
@@ -45,8 +45,8 @@
 
 - (UILabel *)labelWithBoldSystemFontOfSize:(CGFloat)size {
 	CGFloat width = [UIScreen mainScreen].bounds.size.width - 50;
-	CGFloat height = [self textHeightForSystemFontOfSize:size] + 10.0;
-	CGRect frame = CGRectMake(10.0f, 10.0f, width, height);
+	CGFloat height = [self textHeightForBoldSystemFontOfSize:size] + 10.0;
+	CGRect frame = CGRectMake(10.0f, 0, width, height);
 	UILabel *label = [[UILabel alloc] initWithFrame:frame];
 	label.textColor = [UIColor blackColor];
 	label.backgroundColor = [UIColor clearColor];

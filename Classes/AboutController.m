@@ -6,7 +6,6 @@
 
 - (void)viewDidLoad {
 	self.title = @"About";
-	self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
 	self.mainText.font = [UIFont systemFontOfSize:13];
 }
 

@@ -25,6 +25,10 @@
 		A231B997107E1DC1003263C3 /* MapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = A231B996107E1DC1003263C3 /* MapAnnotation.m */; };
 		A2348D8F10A05B76003CC54A /* RestaurantMap.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2348D8E10A05B76003CC54A /* RestaurantMap.xib */; };
 		A2348D9710A05BE5003CC54A /* RestaurantMapController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2348D9610A05BE5003CC54A /* RestaurantMapController.m */; };
+		A236429413150CFC00B5CCDB /* large_button_highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = A236429013150CFC00B5CCDB /* large_button_highlighted.png */; };
+		A236429513150CFC00B5CCDB /* large_button.png in Resources */ = {isa = PBXBuildFile; fileRef = A236429113150CFC00B5CCDB /* large_button.png */; };
+		A236429613150CFC00B5CCDB /* small_button_highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = A236429213150CFC00B5CCDB /* small_button_highlighted.png */; };
+		A236429713150CFC00B5CCDB /* small_button.png in Resources */ = {isa = PBXBuildFile; fileRef = A236429313150CFC00B5CCDB /* small_button.png */; };
 		A271876310A829DC003C31C7 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = A271876210A829DC003C31C7 /* Reachability.m */; };
 		A271877710A82A62003C31C7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A271877610A82A62003C31C7 /* SystemConfiguration.framework */; };
 		A27187BC10A8344B003C31C7 /* AboutController.m in Sources */ = {isa = PBXBuildFile; fileRef = A27187BB10A8344B003C31C7 /* AboutController.m */; };
@@ -76,6 +80,10 @@
 		A2348D8E10A05B76003CC54A /* RestaurantMap.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RestaurantMap.xib; sourceTree = "<group>"; };
 		A2348D9510A05BE5003CC54A /* RestaurantMapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantMapController.h; sourceTree = "<group>"; };
 		A2348D9610A05BE5003CC54A /* RestaurantMapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantMapController.m; sourceTree = "<group>"; };
+		A236429013150CFC00B5CCDB /* large_button_highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = large_button_highlighted.png; sourceTree = "<group>"; };
+		A236429113150CFC00B5CCDB /* large_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = large_button.png; sourceTree = "<group>"; };
+		A236429213150CFC00B5CCDB /* small_button_highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = small_button_highlighted.png; sourceTree = "<group>"; };
+		A236429313150CFC00B5CCDB /* small_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = small_button.png; sourceTree = "<group>"; };
 		A271876110A829DC003C31C7 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		A271876210A829DC003C31C7 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		A271877610A82A62003C31C7 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -236,6 +244,10 @@
 		A2B86BAA1078CB3B0034BA03 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				A236429013150CFC00B5CCDB /* large_button_highlighted.png */,
+				A236429113150CFC00B5CCDB /* large_button.png */,
+				A236429213150CFC00B5CCDB /* small_button_highlighted.png */,
+				A236429313150CFC00B5CCDB /* small_button.png */,
 				A271888310AAF3BC003C31C7 /* Default.png */,
 				A271883E10A84BC5003C31C7 /* Icon.png */,
 				A27187FB10A8383D003C31C7 /* IconImage.png */,
@@ -340,6 +352,10 @@
 				A27187FC10A8383D003C31C7 /* IconImage.png in Resources */,
 				A271883F10A84BC5003C31C7 /* Icon.png in Resources */,
 				A271888410AAF3BC003C31C7 /* Default.png in Resources */,
+				A236429413150CFC00B5CCDB /* large_button_highlighted.png in Resources */,
+				A236429513150CFC00B5CCDB /* large_button.png in Resources */,
+				A236429613150CFC00B5CCDB /* small_button_highlighted.png in Resources */,
+				A236429713150CFC00B5CCDB /* small_button.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

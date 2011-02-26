@@ -26,6 +26,8 @@
 	locationLabel.text = [LocationRepository formattedLocation];
 	[self.mainTableView setTableHeaderView:self.sortView];
 	[self.mainTableView setTableFooterView:self.tableFooterView];
+	[self.mainTableView setSeparatorColor:[UIColor colorWithRed:0.5019 green:0.5764 blue:0.7411 alpha:0.25]];
+	[self.resultCountLabel setTextColor:[UIColor colorWithRed:0.1058 green:0.1686 blue:0.3921 alpha:1]];
 	
 	UIBarButtonItem *mapBarButtonItem = [[UIBarButtonItem alloc] 
 										 initWithTitle:@"Map" 

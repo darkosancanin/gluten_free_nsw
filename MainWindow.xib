@@ -69,6 +69,10 @@
 					<bool key="IBUIClipsSubviews">YES</bool>
 					<bool key="IBUIMultipleTouchEnabled">YES</bool>
 					<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+					<object class="NSColor" key="IBUITintColor">
+						<int key="NSColorSpace">2</int>
+						<bytes key="NSRGB">MC4zODgyMzUzMzA2IDAuNTk2MDc4NDU1NCAwLjc5MjE1NjkzNDcAA</bytes>
+					</object>
 				</object>
 				<object class="IBUIToolbar" key="IBUIToolbar" id="60015574">
 					<nil key="NSNextResponder"/>
