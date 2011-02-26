@@ -34,7 +34,7 @@
 		self.viewWebsiteButton.alpha = 0;
 	}
 	
-	BOOL hasLocation = [LocationRepository latitude] > 0 && [LocationRepository longitude] > 0;
+	BOOL hasLocation = [LocationRepository latitude] != 0 && [LocationRepository longitude] != 0;
 	if(hasLocation == NO){
 		self.directionsButton.alpha = 0;
 	}
@@ -66,7 +66,7 @@
 		[sections addObject:[NSNumber numberWithInt:kSectionWebsite]];
 	if(restaurant.phoneNumber.length > 2)
 		[sections addObject:[NSNumber numberWithInt:kSectionPhoneNumber]];
-	if([LocationRepository latitude] > 0 && [LocationRepository longitude] > 0){
+	if([LocationRepository latitude] != 0 && [LocationRepository longitude] != 0){
 		[sections addObject:[NSNumber numberWithInt:kSectionDistance]];
 	}
 }
