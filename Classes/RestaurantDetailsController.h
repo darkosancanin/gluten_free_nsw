@@ -1,6 +1,7 @@
 #import <UIKit/UIKit.h>
 #import "Restaurant.h"
 #import "LocationRepository.h"
+#import "GANTracker.h"
 
 @interface RestaurantDetailsController : UIViewController<UITableViewDelegate, UITableViewDataSource> {
 	Restaurant *restaurant;

@@ -37,9 +37,17 @@
 	
 	[mapView setRegion:region animated:YES];
 	[mapView regionThatFits:region];
+	
+	NSError *error;
+	NSString *url = [[NSString stringWithFormat:@"/map/%d/%@", restaurant.restaurantId, restaurant.name] stringByReplacingOccurrencesOfString:@" " withString:@"_"];
+	NSLog(@"Track URL: %@", url);
+	if (![[GANTracker sharedTracker] trackPageview:url withError:&error]) {
+		NSLog(@"Error tracking page using google analytics: %@", error);
+	}
 }
 
 - (void)mapViewDidFinishLoadingMap:(MKMapView *)mapView{
+	NSLog(@"mapViewDidFinishLoadingMap");
 	CLLocation *location = [[CLLocation alloc] initWithLatitude:self.restaurant.latitude longitude:self.restaurant.longitude];
 	CLLocationCoordinate2D locationCoordinate = location.coordinate;
 	
@@ -50,6 +58,7 @@
 	annotation.subtitle = self.restaurant.address;
 	[self.mapView addAnnotation:annotation];
 	[annotation release];
+	NSLog(@"Adding annotation at lat:%f long:%f", locationCoordinate.latitude, locationCoordinate.longitude);
 	
 	[self.mapView selectAnnotation:[[self.mapView annotations] lastObject] animated:YES];
 }

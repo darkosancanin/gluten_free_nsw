@@ -1,5 +1,6 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import "GANTracker.h"
 
 @interface MapListController : UIViewController<MKMapViewDelegate> {
 	IBOutlet MKMapView *mapView;

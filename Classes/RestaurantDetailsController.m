@@ -29,20 +29,32 @@
 		[RestaurantRepository hydrateRestaurant:restaurant];
 	}
 	
-	if(self.restaurant.website.length <= 2){
+	BOOL hasWebsite = self.restaurant.website.length > 2;
+	if(hasWebsite == NO){
 		self.viewWebsiteButton.alpha = 0;
 	}
 	
-	if([LocationRepository latitude] == 0 || [LocationRepository longitude] == 0){
+	BOOL hasLocation = [LocationRepository latitude] > 0 && [LocationRepository longitude] > 0;
+	if(hasLocation == NO){
 		self.directionsButton.alpha = 0;
 	}
 	
+	if(hasWebsite && hasLocation == NO){
+		self.viewWebsiteButton.frame = self.directionsButton.frame;
+	}
 	
 	[self.mainTableView setTableFooterView:self.footerView];
 	[self.mainTableView setSeparatorColor:[UIColor clearColor]];
 		
 	[self createHeader];
 	[self createSectionsArray];
+	
+	NSError *error;
+	NSString *url = [[NSString stringWithFormat:@"/restaurant_details/%d/%@", restaurant.restaurantId, restaurant.name] stringByReplacingOccurrencesOfString:@" " withString:@"_"];
+	NSLog(@"Track URL: %@", url);
+	if (![[GANTracker sharedTracker] trackPageview:url withError:&error]) {
+		NSLog(@"Error tracking page using google analytics: %@", error);
+	}
 }
 
 - (void)createSectionsArray{
@@ -163,6 +175,12 @@
 	NSString *phoneNumberUrl = [NSString stringWithFormat:@"tel://%@", self.restaurant.phoneNumber];
 	phoneNumberUrl = [phoneNumberUrl stringByReplacingOccurrencesOfString:@" " withString:@""];
 	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumberUrl]];
+	
+	NSError *error;
+	NSLog(@"Tracking event - Restaurant Details, Call, %@", self.restaurant.phoneNumber);
+	if (![[GANTracker sharedTracker] trackEvent:@"Restaurant Details" action:@"Call" label:self.restaurant.phoneNumber value:-1 withError:&error]) {
+		NSLog(@"Error tracking page using google analytics: %@", error);
+	}
 }
 
 - (IBAction)viewOnMapButtonClicked:(id)sender{
@@ -180,6 +198,12 @@
 	NSString *addressURL = [NSString stringWithString:self.restaurant.website];
 	addressURL = [addressURL stringByReplacingOccurrencesOfString:@" " withString:@"+"];
 	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:addressURL]];
+	
+	NSError *error;
+	NSLog(@"Tracking event - Restaurant Details, View Website, %@", self.restaurant.website);
+	if (![[GANTracker sharedTracker] trackEvent:@"Restaurant Details" action:@"View Website" label:self.restaurant.website value:-1 withError:&error]) {
+		NSLog(@"Error tracking page using google analytics: %@", error);
+	}
 }
 
 - (IBAction)directionsButtonClicked:(id)sender{

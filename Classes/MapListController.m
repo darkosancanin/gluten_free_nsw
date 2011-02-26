@@ -59,6 +59,13 @@
 	
 	[mapView setRegion:region animated:YES];
 	[mapView regionThatFits:region];
+	
+	NSError *error;
+	NSString *url = @"/map";
+	NSLog(@"Track URL: %@", url);
+	if (![[GANTracker sharedTracker] trackPageview:url withError:&error]) {
+		NSLog(@"Error tracking page using google analytics: %@", error);
+	}
 }
 
 - (void)mapViewDidFinishLoadingMap:(MKMapView *)mapView{

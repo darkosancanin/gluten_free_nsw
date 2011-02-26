@@ -3,7 +3,7 @@
 #import <MapKit/MapKit.h>
 #import <MapKit/MKReverseGeocoder.h>
 #import "RetrieveGPSLocationControllerDelegate.h"
-
+#import "GANTracker.h"
 
 @interface RetrieveGPSLocationController : UIViewController<CLLocationManagerDelegate,MKReverseGeocoderDelegate> {
 	CLLocationManager *locationManager;

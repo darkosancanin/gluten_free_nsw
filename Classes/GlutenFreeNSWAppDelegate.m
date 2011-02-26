@@ -24,6 +24,14 @@
     [window makeKeyAndVisible];
 }
 
+- (void)applicationDidBecomeActive:(UIApplication *)application {    
+	NSError *error;
+	NSLog(@"Tracking event - Application, Activated");
+	if (![[GANTracker sharedTracker] trackEvent:@"Application" action:@"Activated" label:@"" value:-1 withError:&error]) {
+		NSLog(@"Error tracking page using google analytics: %@", error);
+	}
+}
+
 - (void) reachabilityChanged: (NSNotification* )note {
     Reachability* currentReachability = [note object];
     NSParameterAssert([currentReachability isKindOfClass: [Reachability class]]);

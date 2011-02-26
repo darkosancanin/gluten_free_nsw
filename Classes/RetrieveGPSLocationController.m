@@ -18,6 +18,13 @@
 	self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
 	[self.locationManager startUpdatingLocation];
 	[self performSelector:@selector(updatingLocationTimedOut) withObject:nil afterDelay:15];
+	
+	NSError *error;
+	NSString *url = @"/update_gps_location";
+	NSLog(@"Track URL: %@", url);
+	if (![[GANTracker sharedTracker] trackPageview:url withError:&error]) {
+		NSLog(@"Error tracking page using google analytics: %@", error);
+	}
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation{

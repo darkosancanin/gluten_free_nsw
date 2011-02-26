@@ -214,6 +214,11 @@
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+	NSError *error;
+	NSLog(@"Tracking event - Restaurants, Search, %@", headerSearchBar.text);
+	if (![[GANTracker sharedTracker] trackEvent:@"Restaurants" action:@"Search" label:headerSearchBar.text value:-1 withError:&error]) {
+		NSLog(@"Error tracking page using google analytics: %@", error);
+	}
 	[self hideSearchBar];
 	[self refreshTable];
 }

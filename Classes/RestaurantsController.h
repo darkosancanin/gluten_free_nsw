@@ -1,5 +1,6 @@
 #import <UIKit/UIKit.h>
 #import "RetrieveGPSLocationControllerDelegate.h"
+#import "GANTracker.h"
 
 @interface RestaurantsController : UIViewController<UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate,RetrieveGPSLocationControllerDelegate> {
 	IBOutlet UISegmentedControl *sortSegmentedControl;

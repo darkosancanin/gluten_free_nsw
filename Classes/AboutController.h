@@ -1,4 +1,5 @@
 #import <UIKit/UIKit.h>
+#import "GANTracker.h"
 
 @interface AboutController : UIViewController {
 	IBOutlet UITextView *mainText;
