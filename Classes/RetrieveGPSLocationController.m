@@ -53,7 +53,7 @@
 	}
 	else{
 		[self stopUpdatingLocation];
-		[geoCoder cancel];
+		[geoCoder cancelGeocode];
 		NSLog(@"Timed out trying to retrieve location.");
 		[delegate didTimeOutWhileRetrievingGPSLocation];
 		[self dismissModalViewControllerAnimated:NO];
@@ -70,14 +70,35 @@
 		return;
 	}
 	activityLabel.text = @"Retrieving your address...";
-	geoCoder=[[MKReverseGeocoder alloc] initWithCoordinate:location.coordinate];
-	geoCoder.delegate=self;
-	[geoCoder start];
+    geoCoder=[[CLGeocoder alloc] init];
+    CLGeocodeCompletionHandler geoCodeCompletionHandler = ^(NSArray *placemarks, NSError *error) {
+        if(error != nil){
+            [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(updatingAddressTimedOut) object:nil];
+            [geoCoder cancelGeocode];
+            NSLog(@"Failed to retrieve address. Reason: %@",[error description]);
+            [delegate didFailRetrievingAddressWithError:error];
+            [self dismissModalViewControllerAnimated:NO];
+        }
+        else if ([placemarks count] > 0)
+        {
+            CLPlacemark *placemark = [placemarks objectAtIndex:0];
+            NSLog(@"The address was retrieved. Thoroughfare:%@, Locality:%@",placemark.thoroughfare, placemark.locality);
+            [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(updatingAddressTimedOut) object:nil];
+            if(placemark.thoroughfare != nil && placemark.thoroughfare != @"null" && placemark.locality != nil && placemark.locality != @"null")
+                [LocationRepository setAddress:[NSString stringWithFormat:@"%@, %@", placemark.thoroughfare, placemark.locality]];
+            else
+                [LocationRepository setAddress:nil];
+        
+            [delegate didFinishRetrievingGPSLocation];
+            [self dismissModalViewControllerAnimated:NO];
+        }
+    };
+	[geoCoder reverseGeocodeLocation:(CLLocation *)location completionHandler:(CLGeocodeCompletionHandler)geoCodeCompletionHandler];
 	[self performSelector:@selector(updatingAddressTimedOut) withObject:nil afterDelay:10];
 }
 
 - (void)updatingAddressTimedOut{
-	[geoCoder cancel];
+	[geoCoder cancelGeocode];
 	NSLog(@"Timed out trying to retrieve address.");
 	[delegate didFinishRetrievingGPSLocation];
 	[self dismissModalViewControllerAnimated:NO];
@@ -96,26 +117,6 @@
 	[self stopUpdatingLocation];
 }
 
-- (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFindPlacemark:(MKPlacemark *)placemark{
-	NSLog(@"The address was retrieved. Thoroughfare:%@, Locality:%@",placemark.thoroughfare, placemark.locality);
-	[NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(updatingAddressTimedOut) object:nil];
-	if(placemark.thoroughfare != nil && placemark.thoroughfare != @"null" && placemark.locality != nil && placemark.locality != @"null")
-		[LocationRepository setAddress:[NSString stringWithFormat:@"%@, %@", placemark.thoroughfare, placemark.locality]];
-	else
-		[LocationRepository setAddress:nil];
-	
-	[delegate didFinishRetrievingGPSLocation];
-	[self dismissModalViewControllerAnimated:NO];
-}
-
-- (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFailWithError:(NSError *)error{
-	[NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(updatingAddressTimedOut) object:nil];
-	[geoCoder cancel];
-	NSLog(@"Failed to retrieve address. Reason: %@",[error description]);
-	[delegate didFailRetrievingAddressWithError:error];
-	[self dismissModalViewControllerAnimated:NO];
-}
-
 - (void)stopUpdatingLocation {
     [locationManager stopUpdatingLocation];
     locationManager.delegate = nil;
@@ -126,7 +127,7 @@
 	if (touch.tapCount > 1) {
 		[NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(updatingLocationTimedOut) object:nil];
 		[self stopUpdatingLocation];
-		[geoCoder cancel];
+		[geoCoder cancelGeocode];
 		[self dismissModalViewControllerAnimated:NO];
 	}
 }

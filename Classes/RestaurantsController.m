@@ -117,7 +117,7 @@
 	NSString* cellIdentifier = @"RestaurantCell";
 	RestaurantTableViewCell *cell = (RestaurantTableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
 	if(cell == nil){
-		cell = [[RestaurantTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier];
+		cell = [[RestaurantTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
 	}
 	
 	Restaurant *restaurant;
