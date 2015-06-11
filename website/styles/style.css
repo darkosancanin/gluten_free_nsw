@@ -1,0 +1,60 @@
+body 
+{
+    background: url(../images/header_background.png)  repeat-x;
+    margin: 0px;
+    padding:0px;
+}
+
+#container
+{
+    width:900px;
+    margin:0px auto;
+    text-align:left;
+}
+
+#content
+{
+    margin-left:15px;
+}
+
+.screenshot
+{
+    border:0px;
+    margin-right:60px;
+    margin-bottom:20px;
+}
+
+.textBlockHeading
+{
+    margin-top:15px;
+    margin-bottom:5px;
+} 
+
+.textBlock
+{
+    margin-bottom:35px;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:12px;
+    width:600px;
+} 
+
+#rightpanel
+{
+    width:193px;
+    float:right;
+    text-align:center;
+}
+
+a:link, a:visited 
+{
+    color: #000000;
+    text-decoration: none;
+    border:0px;
+    font-weight:bolder;
+}
+
+a:hover 
+{
+    color: #000000;
+    text-decoration: underline;
+}
